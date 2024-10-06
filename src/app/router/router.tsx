@@ -9,6 +9,7 @@ const Router = () => {
 
     useEffect(() => {
         telegram.ready()
+        telegram.headerColor = "#0D1117"
     }, [])
 
   return (
