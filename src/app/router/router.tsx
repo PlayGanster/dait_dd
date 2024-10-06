@@ -1,9 +1,16 @@
 import { RouterList } from "@/data/router/router-data"
 import { RouterType } from "@/types/types"
-import { Suspense } from "react"
+import { Suspense, useEffect } from "react"
 import { Route, Routes } from "react-router-dom"
 
+const telegram = window.Telegram.WebApp
+
 const Router = () => {
+
+    useEffect(() => {
+        telegram.ready()
+    }, [])
+
   return (
     <Routes>
         {
