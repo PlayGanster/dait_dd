@@ -3,20 +3,20 @@ import { SettingsListType, SettingsValueType, SettingsValuesType } from "@/types
 import "@styles/pages/settings/settings-content.scss"
 import { useEffect, useState } from "react"
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io"
-// import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
-// const telegram = window.Telegram.WebApp
+const telegram = window.Telegram.WebApp
 
 const SettingsContent = () => {
     const [list, setList] = useState<SettingsListType[]>([])
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     useEffect(() => {
         setList(SettingsList)
-        // telegram.BackButton.show()
+        telegram.BackButton.show()
     }, [])
 
-    // telegram.BackButton.onClick(() => navigate("/"))
+    telegram.BackButton.onClick(() => navigate("/"))
 
     function openDropdown(id: number) {
         const copy: SettingsListType[] = [...list];
