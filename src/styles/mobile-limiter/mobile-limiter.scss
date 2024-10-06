@@ -1,0 +1,15 @@
+.mobile__limiter {
+    width: 100dvw;
+    height: 100dvh;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .limiter__content {
+        max-width: 1024px;
+        width: 100%;
+        height: 100dvh;
+        background: #010409;
+    }
+}
