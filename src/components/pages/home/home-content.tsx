@@ -3,8 +3,16 @@ import USERS_IMG from "@assets/img/home/users.webp"
 import FIRE_IMG from "@assets/img/home/fire.webp"
 import MONEY_IMG from "@assets/img/home/money.webp"
 import ContentClicker from "./content-clicker"
+import { useEffect } from "react"
+
+const telegram = window.Telegram.WebApp
 
 const HomeContent = () => {
+
+    useEffect(() => {
+        telegram.BackButton.hide()
+    }, [])
+
   return (
     <div className="home-content">
         <ul className="content__info">
