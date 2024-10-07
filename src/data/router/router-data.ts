@@ -41,6 +41,8 @@ export const RouterNavBar: RouterNavBarType[] = [
 
 const HomePage = React.lazy(() => import("@pages/home/home"));
 const SettingsPage = React.lazy(() => import("@pages/settings/settings"));
+const ProfilePage = React.lazy(() => import("@pages/profile/profile"));
+const AnimationsPage = React.lazy(() => import("@pages/animations/animations"));
 
 export const RouterList: RouterType[] = [
     {
@@ -52,5 +54,15 @@ export const RouterList: RouterType[] = [
         id: 2,
         path: "/settings",
         component: SettingsPage
+    },
+    {
+        id: 3,
+        path: "/profile",
+        component: ProfilePage
+    },
+    {
+        id: 4,
+        path: "/animations",
+        component: AnimationsPage
     }
 ]

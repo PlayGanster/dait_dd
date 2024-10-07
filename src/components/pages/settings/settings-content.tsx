@@ -47,7 +47,7 @@ const SettingsContent = () => {
                     return (
                         <div className="content-item" key={index}>
                             <p className="item__name">{el.name}</p>
-                            <div className="item__dropdown" onClick={() => openDropdown(el.id)}>
+                            <div className={`item__dropdown ${el.open ? "--active" : ""}`} onClick={() => openDropdown(el.id)}>
                                 <p className="dropdown__value">{el.value} {el.open ? (<IoIosArrowUp size={18}  />) : (<IoIosArrowDown size={18}  />)}</p>
                                 {
                                     el.open ?
