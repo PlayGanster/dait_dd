@@ -77,7 +77,7 @@ const SettingsContent = () => {
                             <p className="item__name">{el.name}</p>
                             <button className="item__button" onClick={() => {
                                 if(el.href_button !== undefined) navigate(el.href_button)
-                            }}>
+                            }} disabled={!el.active_button}>
                                 {el.text_button}
                             </button>
                         </div>

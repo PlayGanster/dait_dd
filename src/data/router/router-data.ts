@@ -44,6 +44,7 @@ const SettingsPage = React.lazy(() => import("@pages/settings/settings"));
 const ProfilePage = React.lazy(() => import("@pages/profile/profile"));
 const AnimationsPage = React.lazy(() => import("@pages/animations/animations"));
 const PoliticsPage = React.lazy(() => import("@pages/politics/politics"));
+const FeedbackPage = React.lazy(() => import("@pages/feedback/feedback"));
 
 export const RouterList: RouterType[] = [
     {
@@ -70,5 +71,10 @@ export const RouterList: RouterType[] = [
         id: 5,
         path: "/politics",
         component: PoliticsPage
+    },
+    {
+        id: 6,
+        path: "/feedback",
+        component: FeedbackPage
     }
 ]
