@@ -4,8 +4,8 @@ import { useState } from "react"
 const ProfileContent = () => {
     const [name, setName] = useState<string>("");
     const [surname, setSurname] = useState<string>("");
-    const [about, setAbout] = useState<string>("");
-    const [profileFile, setProfileFile] = useState<{files: string}>({files: ''})
+    // const [about, setAbout] = useState<string>("");
+    // const [profileFile, setProfileFile] = useState<{files: string}>({files: ''})
 
     const onChangeProfileFile = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const file = (e.target as HTMLInputElement).files;
