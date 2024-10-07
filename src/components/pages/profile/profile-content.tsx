@@ -1,11 +1,21 @@
 import "@styles/pages/profile/profile-content.scss"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom";
+
+const telegram = window.Telegram.WebApp
 
 const ProfileContent = () => {
     const [name, setName] = useState<string>("");
     const [surname, setSurname] = useState<string>("");
+    const navigate = useNavigate();
     // const [about, setAbout] = useState<string>("");
     // const [profileFile, setProfileFile] = useState<{files: string}>({files: ''})
+
+    useEffect(() => {
+        telegram.BackButton.show()
+    }, [])
+
+    telegram.BackButton.onClick(() => navigate("/"));
 
     const onChangeProfileFile = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const file = (e.target as HTMLInputElement).files;
