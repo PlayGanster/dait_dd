@@ -28,7 +28,8 @@ export interface SettingsListType {
     name: string,
     id_values: number | null,
     type: string,
-    text_button?:string
+    text_button?:string,
+    href_button?:string
 }
 
 export interface SettingsValueType {

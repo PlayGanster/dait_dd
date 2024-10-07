@@ -40,7 +40,8 @@ export const SettingsList: SettingsListType[] = [
         name: "Обратная связь",
         id_values: null,
         type: "button",
-        text_button: "Связаться"
+        text_button: "Связаться",
+        href_button: "/fallback"
     },
     {
         id: 7,
@@ -49,7 +50,8 @@ export const SettingsList: SettingsListType[] = [
         name: "Политика",
         id_values: null,
         type: "button",
-        text_button: "Открыть"
+        text_button: "Открыть",
+        href_button: "/politics"
     },
     {
         id: 8,

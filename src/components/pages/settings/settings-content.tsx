@@ -75,7 +75,9 @@ const SettingsContent = () => {
                     return (
                         <div className="content-item">
                             <p className="item__name">{el.name}</p>
-                            <button className="item__button">
+                            <button className="item__button" onClick={() => {
+                                if(el.href_button !== undefined) navigate(el.href_button)
+                            }}>
                                 {el.text_button}
                             </button>
                         </div>
