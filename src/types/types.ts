@@ -42,3 +42,11 @@ export interface SettingsValuesType {
     id: number,
     values: SettingsValueType[],
 }
+
+export interface ClothesType {
+    id: number,
+    open: boolean,
+    name: string,
+    img: any,
+    description: string
+}
