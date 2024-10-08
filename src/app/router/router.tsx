@@ -20,6 +20,7 @@ const Router = () => {
 
     useEffect(() => {
         telegram.ready()
+        telegram.expand()
         telegram.headerColor = "#0D1117"
     }, [])
     // !isLoading ?

@@ -15,7 +15,7 @@ const AnimationsContent = () => {
 
     return (
         <div className="animations-content">
-
+            Даша дура
         </div>
     )
 }
