@@ -31,9 +31,6 @@ const ClothesContent = () => {
     const [clothesOuterwear, setClothesOuterwear] = useState<ClothesType[]>([])
     const [clothesTrousers, setClothesTrousers] = useState<ClothesType[]>([])
     const [clothesSneakers, setClothesSneakers] = useState<ClothesType[]>([])
-
-    telegram.BackButton.onClick(() => navigate("/"))
-
     useEffect(() => {
         const array_get = location.href.split("?")
         const filter_array = array_get[1].split("=")
@@ -42,12 +39,16 @@ const ClothesContent = () => {
         setClothesOuterwear(ClothesOuterwear)
         setClothesTrousers(ClothesTrousers)
         setClothesSneakers(ClothesSneakers)
+        telegram.BackButton.show()
         copy.filter((el: any) => {
             if(el.get === filter) el.active = true
             else el.active = false
         })
         setMenu(copy)
     }, [location.href])
+
+    telegram.BackButton.onClick(() => navigate("/"))
+
 
     function renderClothes() {
         const array_get = location.href.split("?")
