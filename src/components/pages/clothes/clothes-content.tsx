@@ -2,6 +2,8 @@ import { ClothesOuterwear, ClothesSneakers, ClothesTrousers } from "@/data/cloth
 import { ClothesType } from "@/types/types"
 import "@styles/pages/clothes/clothes-content.scss"
 import { useEffect, useState } from "react"
+import { GiClothes } from "react-icons/gi"
+import { RxCross2 } from "react-icons/rx"
 import { useNavigate } from "react-router-dom"
 
 const telegram = window.Telegram.WebApp
@@ -31,6 +33,8 @@ const ClothesContent = () => {
     const [clothesOuterwear, setClothesOuterwear] = useState<ClothesType[]>([])
     const [clothesTrousers, setClothesTrousers] = useState<ClothesType[]>([])
     const [clothesSneakers, setClothesSneakers] = useState<ClothesType[]>([])
+    const [clothesSelect, setClothesSelect] = useState<ClothesType | null>(null)
+    const [stylePopup, setStylePopup] = useState<string>("");
     useEffect(() => {
         const array_get = location.href.split("?")
         const filter_array = array_get[1].split("=")
@@ -64,7 +68,7 @@ const ClothesContent = () => {
                                 <div className="item__info">
                                     <p className="info__name">{el.name}</p>
                                     <p className="info__description">{el.description}</p>
-                                    <button className="info__button">Посмотреть</button>
+                                    <button className="info__button" onClick={() => setClothesSelect(el)}>Посмотреть</button>
                                 </div>
                             </div>
                         ))
@@ -81,7 +85,7 @@ const ClothesContent = () => {
                                 <div className="item__info">
                                     <p className="info__name">{el.name}</p>
                                     <p className="info__description">{el.description}</p>
-                                    <button className="info__button">Посмотреть</button>
+                                    <button className="info__button" onClick={() => setClothesSelect(el)}>Посмотреть</button>
                                 </div>
                             </div>
                         ))
@@ -98,7 +102,7 @@ const ClothesContent = () => {
                                 <div className="item__info">
                                     <p className="info__name">{el.name}</p>
                                     <p className="info__description">{el.description}</p>
-                                    <button className="info__button">Посмотреть</button>
+                                    <button className="info__button" onClick={() => setClothesSelect(el)}>Посмотреть</button>
                                 </div>
                             </div>
                         ))
@@ -106,6 +110,40 @@ const ClothesContent = () => {
                 </>
             )
         }
+    }
+
+    const closePopup = () => {
+        setStylePopup("--close")
+        setTimeout(() => {
+            setClothesSelect(null)
+            setStylePopup("")
+        }, 1000);
+    }
+
+    function renderPopupClothes() {
+        if(clothesSelect === null) return ;
+        return (
+            <div className="content__popup--wrapper">
+                <div className={`content__popup--content ${stylePopup}`}>
+                    <div className="content__header">
+                        <p className="header__name"><GiClothes size={24} fill="#9198A1" />{clothesSelect.name}</p>
+                        <RxCross2 size={24} onClick={closePopup} />
+                    </div>
+                    <div className="content__content">
+                        <div className="content__product">
+                            <img className="product__img" src={clothesSelect.img} />
+                            <div className="product__info">
+                                <p className="info__description">{clothesSelect.description}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="content__buttons">
+                        <button className="button-item">Предпросмотр</button>
+                        <button className="button-item --select" onClick={closePopup}>Применить</button>
+                    </div>
+                </div>
+            </div>
+        )
     }
 
   return (
@@ -120,6 +158,9 @@ const ClothesContent = () => {
         <div className="content__list">
             {renderClothes()}
         </div>
+        {
+            renderPopupClothes()
+        }
     </div>
   )
 }
