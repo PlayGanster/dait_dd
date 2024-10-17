@@ -22,6 +22,7 @@ const Router = () => {
 
     useEffect(() => {
         axios.post(`${url_api}user/login`, {id_telegram: id, refid: 2}).then((response:any) => {
+            console.log(response.data)
             if(response.data.code === "200"){
                 dispatch(
                     setDataUser({
