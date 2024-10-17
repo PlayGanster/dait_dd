@@ -2,7 +2,7 @@ import { RouterList } from "@/data/router/router-data"
 import { RouterType } from "@/types/types"
 import { Suspense, useEffect, useState } from "react"
 import { Route, Routes, useNavigate } from "react-router-dom"
-import LoaderDefault from "../loader-default/loader-default"
+// import LoaderDefault from "../loader-default/loader-default"
 import axios from "axios"
 import { url_api } from "@/data/site/site-data"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
@@ -11,14 +11,14 @@ import { setBalance, setDataUser, setFarmOnline, setSettings } from "@/redux/fea
 const telegram = window.Telegram.WebApp
 
 const Router = () => {
-    const [isLoading, setIsLoading] = useState(true);
+    // const [isLoading, setIsLoading] = useState(true);
     const [loadingDataUser, setLoadingDataUser] = useState(false)
     const navigate = useNavigate()
     const dispatch = useAppDispatch();
     const user = useAppSelector(state => state.user)
     const id = telegram.initDataUnsafe.user?.id
 
-    const handleLoading = () => { setIsLoading(false); }
+    // const handleLoading = () => { setIsLoading(false); }
 
     useEffect(() => {
         axios.post(`${url_api}user/login`, {id_telegram: id, refid: 2}).then((response:any) => {
@@ -143,14 +143,14 @@ const Router = () => {
         telegram.ready()
         telegram.expand()
         telegram.headerColor = "#0D1117"
-        window.addEventListener("load",handleLoading);
-        return () => window.removeEventListener("load",handleLoading);
+        // window.addEventListener("load",handleLoading);
+        // return () => window.removeEventListener("load",handleLoading);
     },[])
 
     return (
         <>
             {
-                !isLoading ? (
+                // !isLoading ? (
                 <Routes>
                     {
                         RouterList.map((el: RouterType, index: number) => (
@@ -158,9 +158,9 @@ const Router = () => {
                         ))
                     }
                 </Routes>
-                ) : (
-                    <LoaderDefault />
-                )
+                // ) : (
+                //     <LoaderDefault />
+                // )
             }
         </>
     )
