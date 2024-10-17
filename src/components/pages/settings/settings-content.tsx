@@ -14,7 +14,7 @@ const SettingsContent = () => {
     const [list, setList] = useState<SettingsListType[]>([])
     const user = useAppSelector(state => state.user)
     const navigate = useNavigate()
-    const id = telegram.initDataUnsafe.user?.id
+    const idTelegram = telegram.initDataUnsafe.user?.id
 
     useEffect(() => {
         const copy = [...SettingsList]
@@ -48,7 +48,7 @@ const SettingsContent = () => {
                 el.open = false;
             }
         })
-        axios.post(`${url_api}user/changeSettings`, {language: copy[0].value, graphics: copy[1].value, theme: copy[2].value, sound: copy[3].value, id_telegram: id}).then((response:any) => {console.log(response.data)})
+        axios.post(`${url_api}user/changeSettings`, {language: copy[0].value, graphics: copy[1].value, theme: copy[2].value, sound: copy[3].value, id_telegram: idTelegram}).then((response:any) => {console.log(response.data)})
         setList(copy)
     }
 
