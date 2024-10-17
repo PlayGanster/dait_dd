@@ -1,6 +1,9 @@
 import { SettingsList, SettingsValuesList } from "@/data/settings/settings-data"
+import { url_api } from "@/data/site/site-data"
+import { useAppSelector } from "@/redux/store"
 import { SettingsListType, SettingsValueType, SettingsValuesType } from "@/types/types"
 import "@styles/pages/settings/settings-content.scss"
+import axios from "axios"
 import { useEffect, useState } from "react"
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io"
 import { useNavigate } from "react-router-dom"
@@ -9,10 +12,19 @@ const telegram = window.Telegram.WebApp
 
 const SettingsContent = () => {
     const [list, setList] = useState<SettingsListType[]>([])
+    const user = useAppSelector(state => state.user)
     const navigate = useNavigate()
+    const id = telegram.initDataUnsafe.user?.id
 
     useEffect(() => {
-        setList(SettingsList)
+        const copy = [...SettingsList]
+        copy.filter((el: SettingsListType) => {
+            if(el.id === 1) el.value = user.language
+            if(el.id === 2) el.value = user.graphics
+            if(el.id === 3) el.value = user.theme
+            if(el.id === 4) el.value = user.sound
+        })
+        setList(copy)
         telegram.BackButton.show()
     }, [])
 
@@ -36,6 +48,7 @@ const SettingsContent = () => {
                 el.open = false;
             }
         })
+        axios.post(`${url_api}user/changeSettings`, {language: copy[0].value, graphics: copy[1].value, theme: copy[2].value, sound: copy[3].value, id_telegram: id}).then((response:any) => {console.log(response.data)})
         setList(copy)
     }
 

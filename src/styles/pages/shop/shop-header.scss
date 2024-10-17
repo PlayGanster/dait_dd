@@ -1,0 +1,114 @@
+.shop-header {
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #2F353D;
+    background: #0D1117;
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .header__name {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 18px;
+    }
+
+    .header__filter.--active {
+        .filter__popup {
+            animation: openPopup 1s forwards;
+        }
+
+        .filter__name {
+            outline: 2px solid #1F6FEB;
+        }
+    }
+
+    .header__filter {
+        border: 1px solid #3D444D;
+        background: #212830;
+        border-radius: 6px;
+        position: relative;
+
+        .filter__name {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            padding: 6px 12px;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .filter__popup {
+            max-width: 300px;
+            min-width: 250px;
+            width: 100%;
+            position: absolute;
+            right: 0;
+            top: 120%;
+            padding-bottom: 10px;
+            border-radius: 6px;
+            background: #151B23;
+            border: 1px solid #3D444D;
+            z-index: 999;
+
+            .popup__header {
+                width: 100%;
+                padding: 6px 12px;
+                font-size: 14px;
+                border-bottom: 1px solid #3D444D;
+            }
+
+            .popup-item {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                padding: 0px 12px;
+                margin-top: 10px;
+
+                .item__name {
+                    font-size: 12px;
+                }
+
+                .item__list {
+                    display: flex;
+                    gap: 5px;
+                    flex-wrap: wrap;
+
+                    .list-item.--active {
+                        outline: 1px solid #2C93E9;
+                    }
+
+                    .list-item {
+                        padding: 4px 8px;
+                        font-size: 14px;
+                        border-radius: 6px;
+                        border: 1px solid #3D444D;
+                        background: #212830;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes openPopup {
+    0% {
+        opacity: 0;
+        display: none;
+    }
+    20% {
+        display: block;
+    }
+    80% {
+        opacity: 1;
+        display: block;
+    }
+    100% {
+        opacity: 1;
+        display: block;
+    }
+}

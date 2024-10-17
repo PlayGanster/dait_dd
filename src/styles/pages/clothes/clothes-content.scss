@@ -89,13 +89,14 @@
                 width: 100%;
                 position: fixed;
                 bottom: 0;
-                height: 55px;
+                height: 50px;
                 background: #0D1117;
                 border-top: 1px solid #2F353D;
                 display: flex;
                 justify-content: flex-end;
                 align-items: center;
                 padding: 6px 20px;
+                animation: showPopupButtons 1s forwards;
                 gap: 20px;
 
                 .button-item.--select {

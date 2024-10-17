@@ -12,13 +12,13 @@ const ClothesContent = () => {
     const navigate = useNavigate()
     const [menu, setMenu] = useState([
         {
-            name: "Верхняя одежда",
+            name: "Верх",
             path: "/clothes?filter=outerwear",
             get: "outerwear",
             active: false
         },
         {
-            name: "Брюки",
+            name: "Низ",
             path: "/clothes?filter=trousers",
             get: "trousers",
             active: false

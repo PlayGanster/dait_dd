@@ -4,10 +4,12 @@ import FIRE_IMG from "@assets/img/home/fire.webp"
 import MONEY_IMG from "@assets/img/home/money.webp"
 import ContentClicker from "./content-clicker"
 import { useEffect } from "react"
+import { useAppSelector } from "@/redux/store"
 
 const telegram = window.Telegram.WebApp
 
 const HomeContent = () => {
+    const user = useAppSelector(state => state.user)
 
     useEffect(() => {
         telegram.BackButton.hide()
@@ -26,7 +28,7 @@ const HomeContent = () => {
             </li>
             <li className="info-item">
                 <img className="item__icon" src={MONEY_IMG} />
-                <p className="item__amount">189 921</p>
+                <p className="item__amount">{user.balance}</p>
             </li>
         </ul>
         <ContentClicker />

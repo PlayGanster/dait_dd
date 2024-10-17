@@ -50,3 +50,10 @@ export interface ClothesType {
     img: any,
     description: string
 }
+
+export interface FilterShopType {
+    id: number,
+    name: string,
+    active: boolean
+    type_filter: string
+}

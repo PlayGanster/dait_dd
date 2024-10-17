@@ -22,7 +22,7 @@ const LayoutTapbar = () => {
         return (
             <div className="tapbar__topmenu">
                 <ul className="topmenu__list">
-                    <li className="list-item" onClick={() => navigate("/friends")}>Магазин</li>
+                    <li className="list-item" onClick={() => navigate("/shop?filter=all")}>Магазин</li>
                     <li className="list-item" onClick={() => navigate("/tasks")}>Задания</li>
                     <li className="list-item" onClick={() => navigate("/referals")}>Рефералы</li>
                 </ul>

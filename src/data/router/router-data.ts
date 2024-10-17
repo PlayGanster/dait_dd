@@ -45,7 +45,8 @@ const ProfilePage = React.lazy(() => import("@pages/profile/profile"));
 const AnimationsPage = React.lazy(() => import("@pages/animations/animations"));
 const PoliticsPage = React.lazy(() => import("@pages/politics/politics"));
 const FeedbackPage = React.lazy(() => import("@pages/feedback/feedback"));
-const ClothesPage = React.lazy(() => import("@pages/clothes/clothes"))
+const ClothesPage = React.lazy(() => import("@pages/clothes/clothes"));
+const ShopPage = React.lazy(() => import("@pages/shop/shop"));
 
 export const RouterList: RouterType[] = [
     {
@@ -82,5 +83,10 @@ export const RouterList: RouterType[] = [
         id: 7,
         path: "/clothes",
         component: ClothesPage
+    },
+    {
+        id: 8,
+        path: "/shop",
+        component: ShopPage
     }
 ]
