@@ -1,4 +1,4 @@
-export const url_api:string = "http://localhost/"
+export const url_api:string = "https://sim-party.ru/"
 
 
 const telegram = window.Telegram.WebApp
