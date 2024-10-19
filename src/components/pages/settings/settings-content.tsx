@@ -1,5 +1,5 @@
 import { SettingsList, SettingsValuesList } from "@/data/settings/settings-data"
-import { url_api } from "@/data/site/site-data"
+import { idUserTelegram, url_api } from "@/data/site/site-data"
 import { useAppSelector } from "@/redux/store"
 import { SettingsListType, SettingsValueType, SettingsValuesType } from "@/types/types"
 import "@styles/pages/settings/settings-content.scss"
@@ -14,7 +14,6 @@ const SettingsContent = () => {
     const [list, setList] = useState<SettingsListType[]>([])
     const user = useAppSelector(state => state.user)
     const navigate = useNavigate()
-    const idTelegram = telegram.initDataUnsafe.user?.id
 
     useEffect(() => {
         const copy = [...SettingsList]
@@ -48,7 +47,7 @@ const SettingsContent = () => {
                 el.open = false;
             }
         })
-        axios.post(`${url_api}user/changeSettings`, {language: copy[0].value, graphics: copy[1].value, theme: copy[2].value, sound: copy[3].value, id_telegram: idTelegram}).then((response:any) => {console.log(response.data)})
+        axios.post(`${url_api}user/changeSettings`, {language: copy[0].value, graphics: copy[1].value, theme: copy[2].value, sound: copy[3].value, id_telegram: idUserTelegram}).then((response:any) => {console.log(response.data)})
         setList(copy)
     }
 

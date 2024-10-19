@@ -16,6 +16,7 @@
         justify-content: center;
         align-items: center;
         gap: 20px;
+        position: relative;
 
         .clicker__navigation {
             display: flex;
@@ -40,6 +41,71 @@
                         -moz-box-shadow: 0px 0px 50px 50px rgba(255, 255, 255, 0.075);
                         box-shadow: 0px 0px 50px 50px rgba(255, 255, 255, 0.075);
                     }
+                }
+            }
+        }
+
+        .clicker__farm--popup {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+
+            .button__start {
+                border-radius: 6px;
+                padding: 6px 12px;
+                width: 100%;
+                background: #0D1117;
+                color: #1F6FEB;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                -webkit-box-shadow: 0px 0px 25px 6px rgba(31, 110, 235, 0.2);
+                -moz-box-shadow: 0px 0px 25px 6px rgba(31, 110, 235, 0.2);
+                box-shadow: 0px 0px 25px 6px rgba(31, 110, 235, 0.2);
+                border: 1px solid #2F353D;
+                cursor: pointer;
+            }
+
+            .button__farming {
+                border-radius: 6px;
+                padding: 6px 12px;
+                width: 100%;
+                background: #151B23;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                align-items: center;
+                border: 1px solid #2F353D;
+
+                .farming__name {
+                    color: white;
+                }
+
+                .farming__amount {
+                    color: white;
+                }
+            }
+
+            .button__claim {
+                border-radius: 6px;
+                padding: 6px 12px;
+                width: 100%;
+                background: #238636;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                align-items: center;
+                cursor: pointer;
+
+                .farming__name {
+                    color: white;
                 }
             }
         }

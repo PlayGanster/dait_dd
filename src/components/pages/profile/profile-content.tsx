@@ -1,4 +1,4 @@
-import { url_api } from "@/data/site/site-data";
+import { idUserTelegram, url_api } from "@/data/site/site-data";
 import { setDataUser } from "@/redux/features/userSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
 import "@styles/pages/profile/profile-content.scss"
@@ -17,7 +17,6 @@ const ProfileContent = () => {
     const dispatch = useAppDispatch()
     const navigate = useNavigate();
     const [selectedFile, setSelectedFile] = useState<any>(null);
-    const id = telegram.initDataUnsafe.user?.id
     // const [about, setAbout] = useState<string>("");
     // const [profileFile, setProfileFile] = useState<{files: string}>({files: ''})
 
@@ -47,31 +46,46 @@ const ProfileContent = () => {
         }else {
             const formData = new FormData();
             formData.append('file', selectedFile);
-            axios.post(`${url_api}user/uploadAvatar`, formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            },
-            })
-            .then((response:any) => {
-                const img = response.data.img
-                if(response.data.code === "200") {
-                    axios.post(`${url_api}user/updateInfo`, {name: name, surname: surname, id_telegram: id, img: img}).then((responsee:any) => {
-                        if(responsee.data === true){
-                            dispatch(setDataUser({data: {name: name, surname: surname, balance: user.balance, img: img, profile_ready: 1}}))
-                        }
-                        setError("")
-                        setSuccess("Удачно изменили данные")
-                        setTimeout(() => {
-                            setSuccess("")
-                        }, (1000));
-                    }).catch(() => {
-                        setError("Произошла ошибка сервера")
-                    })
-                }
-            })
-            .catch(() => {
-                setError("Произошла ошибка сервера")
-            });
+            if(selectedFile !== null){
+                axios.post(`${url_api}user/uploadAvatar`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+                })
+                .then((response:any) => {
+                    const img = response.data.img
+                    if(response.data.code === "200") {
+                        axios.post(`${url_api}user/updateInfo`, {name: name, surname: surname, id_telegram: idUserTelegram, img: img}).then((responsee:any) => {
+                            if(responsee.data === true){
+                                dispatch(setDataUser({data: {name: name, surname: surname, balance: user.balance, img: img, profile_ready: 1}}))
+                            }
+                            setError("")
+                            setSuccess("Удачно изменили данные")
+                            setTimeout(() => {
+                                setSuccess("")
+                            }, (1000));
+                        }).catch(() => {
+                            setError("Произошла ошибка сервера")
+                        })
+                    }
+                })
+                .catch(() => {
+                    setError("Произошла ошибка сервера")
+                });
+            }else {
+                axios.post(`${url_api}user/updateInfo`, {name: name, surname: surname, id_telegram: idUserTelegram, img: user.img}).then((responsee:any) => {
+                    if(responsee.data === true){
+                        dispatch(setDataUser({data: {name: name, surname: surname, balance: user.balance, img: user.img, profile_ready: 1}}))
+                    }
+                    setError("")
+                    setSuccess("Удачно изменили данные")
+                    setTimeout(() => {
+                        setSuccess("")
+                    }, (1000));
+                }).catch(() => {
+                    setError("Произошла ошибка сервера")
+                })
+            }
         }
     }
 
